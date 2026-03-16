@@ -1,0 +1,44 @@
+# =============================================================================
+# .aliases
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Safer file operations (prompt before overwrite/delete)
+# -----------------------------------------------------------------------------
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+# -----------------------------------------------------------------------------
+# Networking
+# -----------------------------------------------------------------------------
+alias ip="curl -s https://ipinfo.io/ip"          # public IP
+alias localip="ipconfig getifaddr en0"            # local WiFi IP
+alias ping="ping -c 5"                            # limit to 5 pings by default
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dlog="docker logs -f"                       # usage: dlog <container>
+alias dex="docker exec -it"                       # usage: dex <container> bash
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias dcl="docker compose logs -f"
+
+# -----------------------------------------------------------------------------
+# Git (supplements Oh My Zsh git plugin aliases)
+# -----------------------------------------------------------------------------
+alias gs="git status"
+alias gd="git diff"
+alias gl="git log --oneline --graph --decorate"
+
+# -----------------------------------------------------------------------------
+# Utilities
+# -----------------------------------------------------------------------------
+alias reload="source ~/.zshrc"                    # reload shell config
+alias path='echo -e ${PATH//:/\\n}'              # print PATH entries one per line
+alias week="date +%V"                             # current week number
+alias update="brew update && brew upgrade && brew cleanup"

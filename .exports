@@ -1,0 +1,22 @@
+# =============================================================================
+# .exports
+# Environment variables and PATH configuration
+# =============================================================================
+
+# Homebrew — M-series Macs use /opt/homebrew (not /usr/local like Intel)
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# Default editor
+export EDITOR="code --wait"   # VS Code; swap for vim/nano if preferred in terminal
+
+# Locale
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Larger history
+export HISTSIZE=32768
+export HISTFILESIZE="${HISTSIZE}"
+export HISTCONTROL=ignoredups   # don't store duplicate commands
+
+# ls colors (used by aliases)
+export CLICOLOR=1

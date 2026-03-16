@@ -1,0 +1,30 @@
+# =============================================================================
+# .gitignore_global
+# Applies to every repo on this machine
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# Editor artifacts
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Claude Code
+.claude/

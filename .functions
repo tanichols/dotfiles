@@ -1,0 +1,49 @@
+# =============================================================================
+# .functions
+# Shell functions — more complex than aliases, take arguments
+# =============================================================================
+
+# Create a directory and cd into it immediately
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# Extract any archive format
+extract() {
+  if [ -f "$1" ]; then
+    case "$1" in
+      *.tar.bz2) tar xjf "$1"   ;;
+      *.tar.gz)  tar xzf "$1"   ;;
+      *.tar.xz)  tar xJf "$1"   ;;
+      *.bz2)     bunzip2 "$1"   ;;
+      *.gz)      gunzip "$1"    ;;
+      *.tar)     tar xf "$1"    ;;
+      *.zip)     unzip "$1"     ;;
+      *.7z)      7z x "$1"      ;;
+      *)         echo "'$1' cannot be extracted — unknown format" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Search running processes
+psg() {
+  ps aux | grep -v grep | grep -i "$1"
+}
+
+# Show disk usage for a directory, sorted by size
+ducks() {
+  du -ch "${1:-.}" | sort -rh | head -20
+}
+
+# Quick look at a Docker container's compose environment
+denv() {
+  docker inspect "$1" --format='{{range .Config.Env}}{{println .}}{{end}}'
+}
+
+# SSH into a host and immediately attach to (or create) a tmux session
+# Usage: ssht user@host
+ssht() {
+  ssh -t "$1" "tmux new-session -A -s main"
+}
